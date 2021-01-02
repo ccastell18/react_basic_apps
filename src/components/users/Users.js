@@ -2,39 +2,12 @@ import React, { Component } from 'react'
 import UserItem from './UserItem'
 
 export class Users extends Component {
-  state = {
-    users: [
-    {
-      id: '1',
-      login: 'mojombo',
-      avatar_url: "https://avatars0.githubusercontent.com/u/1?v=4",
-      html_url: "https://github.com/mojombo"
-    },
-    {
-      id: '2',
-      login: 'Bob',
-      avatar_url: "https://avatars0.githubusercontent.com/u/1?v=4",
-      html_url: "https://github.com/mojombo"
-    },
-    {
-      id: '3',
-      login: 'Jim',
-      avatar_url: "https://avatars0.githubusercontent.com/u/1?v=4",
-      html_url: "https://github.com/mojombo"
-    },
-    {
-      id: '4',
-      login: 'Bill',
-      avatar_url: "https://avatars0.githubusercontent.com/u/1?v=4",
-      html_url: "https://github.com/mojombo"
-    }
-    ]
-  }
+  //users are now props from the api call on App.js
   render() {
-    const {users} = this.state
     return (
       <div style={userStyle}>
-        {users.map(user => (
+        
+        {this.props.users.map(user => (
           //passing user as a prop to UserItem
           <UserItem key={user.id} user={user}/>
         ))}
