@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
- class UserItem extends Component {
-  render() {
+ const UserItem = ({user:{login, avatar_url, html_url}}) => {
+ 
     //instead of state elements are being brought in as props from Users state user from map()
-    const {login, avatar_url, html_url}= this.props.user;
+    //const {login, avatar_url, html_url}= props.user;
     return (
       <div className="card text-center">
         <img src={avatar_url} className="round-img" style={{width: '60px'}}/>  
@@ -14,6 +15,10 @@ import React, { Component } from 'react'
       </div>
     )
   }
-}
+
+  UserItem.propTypes = {
+    user: PropTypes.object.isRequired,
+  }
+
 
 export default UserItem
