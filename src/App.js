@@ -21,7 +21,7 @@ class App extends Component{
     this.setState({loading: true})
 
     //using async add await in front of axios call and get rid of promise and make into a variable.
-    const res = await axios.get('https://api.github.com/users')
+    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_CLIENT_ID}&${process.env.REACT_APP_CLIENT_SECRET}`)
 
     this.setState({users: res.data, loading: false})
   }
