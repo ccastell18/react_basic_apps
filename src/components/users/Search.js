@@ -1,0 +1,42 @@
+import React, {Component} from 'react'
+import PropTypes from 'prop-types'
+
+//With forms, attach state to input
+//getting multiple inputs, this.setState({[e.target.name]: e.target.value})
+export class Search extends Component {
+  state={
+    text: ''
+  }
+
+  static propTypes ={
+    searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+    showUsers: PropTypes.bool.isRequired,
+  }
+
+  onChange = (e) =>{
+    this.setState({text: e.target.value})
+  }
+
+  //this.is sending the props up to the App.js
+  onSubmit = (e) =>{
+    e.preventDefault()
+    this.props.searchUsers(this.state.text);
+    this.setState({text: ''})
+  } 
+  render() {
+    const {showClear, clearUsers} = this.props
+    return (
+      <div>
+      
+        <form className="form" onSubmit={this.onSubmit}>
+        <input type="text" name="text" placeholder="Search Users..." value={this.state.text} onChange={this.onChange}/>
+        <input type="submit" value="Search" className="btn btn-dark btn-block"/>
+        </form>
+        {showClear && <button className="btn btn-light btn-block" onClick={clearUsers}>Clear</button>}
+      </div>
+    )
+  }
+}
+
+export default Search
