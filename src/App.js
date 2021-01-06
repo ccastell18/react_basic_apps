@@ -15,9 +15,9 @@ import './App.css';
 class App extends Component{
   state = {
     users:[],
+    user: {},
     loading: false,
     alert: null,
-    user: {},
     repos: []
   }
 
@@ -85,7 +85,8 @@ class App extends Component{
             <Switch>
               <Route exact path='/' render={props => (
                 <Fragment>
-                <Search searchUsers={this.searchUsers} 
+                <Search 
+                searchUsers={this.searchUsers} 
                 clearUsers={this.clearUsers} 
                 showClear={users.length > 0 ? true: false} 
                 setAlert={this.setAlert}/>
@@ -94,7 +95,11 @@ class App extends Component{
               )}/>
               <Route exact path='/about' component={About}/>
               <Route exact path='/user/:login' render={props => (
-                <User {...props} getUser={this.getUser} getUserRepos={this.getUserRepos} user={user} repos={repos} loading={loading}/>
+                <User 
+                {...props} 
+                getUser={this.getUser} 
+                user={user} 
+                loading={loading}/>
               )}/>
             </Switch>
         </div>  
