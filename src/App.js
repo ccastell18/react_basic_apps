@@ -15,10 +15,10 @@ import './App.css';
 class App extends Component{
   state = {
     users:[],
-    user: {},
+    user: [],
+    repos: [],
     loading: false,
     alert: null,
-    repos: []
   }
 
   // async componentDidMount() {
@@ -74,7 +74,7 @@ class App extends Component{
 
   render(){
 
-    const{repos, users, user, loading, alert} = this.state
+    const{repos, users, loading, alert} = this.state
 
   return (
     <Router>
@@ -98,7 +98,9 @@ class App extends Component{
                 <User 
                 {...props} 
                 getUser={this.getUser} 
-                user={user} 
+                getUserRepos={this.getUserRepos}
+                user={this.state.user} 
+                repos={repos}
                 loading={loading}/>
               )}/>
             </Switch>

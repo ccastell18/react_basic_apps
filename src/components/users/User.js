@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 export class User extends Component {
   componentDidMount () {
     this.props.getUser(this.props.match.params.login)
-    // this.props.getUserRepos(this.props.match.params.login)
+    this.props.getUserRepos(this.props.match.params.login)
   }
 
   static propTypes={
@@ -15,7 +15,7 @@ export class User extends Component {
     user: PropTypes.object.isRequired,
     // repos: PropTypes.array.isRequired,
     getUser: PropTypes.func.isRequired,
-    // getUserRepos: PropTypes.func.isRequired,
+    getUserRepos: PropTypes.func.isRequired,
   }
   render() {
     const {name, 
@@ -36,7 +36,7 @@ export class User extends Component {
 
       if(loading)return <Spinner/>
       
-    return <Fragment>
+    return (<Fragment>
         <Link to='/' className='btn btn-light'>Back to  Search</Link>
         Hireable: {' '}
         {hireable ? 
@@ -48,7 +48,6 @@ export class User extends Component {
             <div className="all-center">
               <img 
               src={avatar_url} 
-              alt="person image" 
               className="round-img"
               style={{width: "150px"}}
               />
@@ -104,7 +103,7 @@ export class User extends Component {
             Public Gists: {public_gists}
           </div> 
         </div>
-      </Fragment>  
+      </Fragment>  )
     }
               
   }
